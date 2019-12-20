@@ -57,9 +57,10 @@ func pokemonPage(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Printing to the window the responseData JSON.
-	fmt.Fprint(w, string(responseData))
-
+	// fmt.Fprint(w, string(responseData))
+	responseDataString := string(responseData)
 	rnd.HTML(w, http.StatusOK, "pokemon", nil)
+	rnd.HTMLString(w, http.StatusOK, "<div class='pokemon-container'><pre>"+responseDataString+"</pre></div>")
 }
 
 // When we access "/", I want to render my template named "index".
@@ -78,5 +79,7 @@ func main() {
 	mux.HandleFunc("/headers", headers)
 	mux.HandleFunc("/pokemon", pokemonPage)
 	// With http.HandleFunc I would be passing nil into the headers param, but here I need mux.
-	http.ListenAndServe(":8090", mux)
+	port := ":8090"
+	fmt.Println("Listening on Port", port)
+	http.ListenAndServe(port, mux)
 }

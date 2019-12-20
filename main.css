@@ -1,0 +1,14 @@
+body {
+  min-width: 900px;
+  max-width: 900px;
+  margin: 0 auto;
+  background: url(pickachu.png) bottom left no-repeat;
+  background-size: cover;
+}
+
+.pokemon-container {
+  max-width: 90vw;
+  margin: 0 auto;
+
+  font-size: 30px;
+}
